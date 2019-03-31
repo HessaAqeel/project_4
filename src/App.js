@@ -43,41 +43,41 @@ class App extends Component {
   render() {
     const { user, activePage } = this.state;
     return (
-      <div class="stars">
-        <div class="twinkling">
+
+      // <div class="stars">
+      //   <div class="twinkling">
+
+      <div>
+        <Nav
+          user={user}
+          changeActivePage={this.changeActivePage}
+          onSignout={this.onSignout}
+        />
+
+        <div className="container">
+          {activePage === "home" ? <Home /> : ""}
+          {activePage === "sign-in" ? (
+            <SigninForm onSignin={this.onSignin} />
+          ) : (
+              ""
+            )}
+          {activePage === "sign-up" ? (
+            <SignupForm onSignin={this.onSignin} />
+          ) : (
+              ""
+            )}
+          {activePage === "change-password" ? (
+            <ChangePasswordForm changeActivePage={this.changeActivePage} />
+          ) : (
+              ""
+            )}
+          {activePage === "profile" ? <Profile /> : ""}
+        </div>
+      </div>
+      //   </div >
 
 
-          <div>
-            <Nav
-              user={user}
-              changeActivePage={this.changeActivePage}
-              onSignout={this.onSignout}
-            />
-
-            <div className="container">
-              {activePage === "home" ? <Home /> : ""}
-              {activePage === "sign-in" ? (
-                <SigninForm onSignin={this.onSignin} />
-              ) : (
-                  ""
-                )}
-              {activePage === "sign-up" ? (
-                <SignupForm onSignin={this.onSignin} />
-              ) : (
-                  ""
-                )}
-              {activePage === "change-password" ? (
-                <ChangePasswordForm changeActivePage={this.changeActivePage} />
-              ) : (
-                  ""
-                )}
-              {activePage === "profile" ? <Profile /> : ""}
-            </div>
-          </div>
-        </div >
-
-
-      </div >
+      // </div >
     );
   }
 }
