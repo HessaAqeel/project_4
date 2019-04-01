@@ -1,37 +1,99 @@
-import React from "react";
+import React, { Component } from "react";
+import apiUrl from "../apiConfig";
+import { getUser } from "../services/AuthService";
+
+class AddStory extends Component {
+    state = {
+        formData: {
+            title: null,
+            author: null,
+            body: null
+        },
+        err: null
+    };
+
+    handleLoginRequest = story => {
+        let url = `${apiUrl}/story`;
+
+        const user = getUser()
+        story.author = user.id
 
 
 
-const AddStory = () => <div>
+        fetch(url, {
+            mode: "cors",
+            credentials: "include",
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(story)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.status > 299)
+                    this.setState({ err: data.message });
+                else {
 
+                    this.props.changeActivePage("story");
+                    this.props.setActiveStroy(data.story)
 
-    Author: <input type="text" name="fname" />
-    Story: <input type="text" name="lname" />
-    <input type="submit" value="Submit" />
+                }
+            })
+            .catch(e => console.log(e));
+    };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.handleLoginRequest(this.state.formData);
+    };
 
-</div >
+    handleChange = ({ currentTarget }) => {
+        const formData = { ...this.state.formData };
+        formData[currentTarget.name] = currentTarget.value;
 
-export default AddStory; import React from 'react';
+        console.log(currentTarget.name, currentTarget.value)
+        this.setState({ formData });
+    };
 
-    // import ReactDOM from 'react-dom';
-// import {Editor, EditorState } from 'draft-js';
+    render() {
+        return (
+            <div className="pt-5 mt-5">
+                <h1>Add Story</h1>
+                {this.state.err ? (
+                    <div className="alert alert-warning"> {this.state.err} </div>
+                ) : (
+                        ""
+                    )}
+                <form onSubmit={this.handleSubmit}>
+                    <div className="form-group">
+                        <label>title </label>
+                        <input
+                            name="title"
+                            className="form-control"
+                            onChange={this.handleChange}
+                        />
 
-// class MyEditor extends React.Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { editorState: EditorState.createEmpty() };
-//         this.onChange = (editorState) => this.setState({ editorState });
-//     }
-//     render() {
-//         return (
-//             <Editor editorState={this.state.editorState} onChange={this.onChange} />
-//         );
-//     }
-// }
+                        <label>body</label>
+                        <input
+                            name="body"
+                            className="form-control"
+                            onChange={this.handleChange}
+                        />
+                    </div>
 
-// ReactDOM.render(
-//     <MyEditor />,
-//     document.getElementById('container')
-// );
-// export default AddStory; import React from 'react';
+                    <button type="submit" className="btn btn-primary"> Add </button>
+
+                </form>
+            </div>
+        );
+    }
+}
+
+export default AddStory;
+
+// const AddStory = () => <div>
+//     Author: <input type="text" name="fname" />
+//     Story: <input type="text" name="lname" />
+//     <input type="submit" value="Submit" />
+// </div>

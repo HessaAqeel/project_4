@@ -7,13 +7,16 @@ import SignupForm from "./components/authForm.js/SignupForm";
 import ChangePasswordForm from "./components/authForm.js/ChangePasswordForm";
 import Home from "./components/Home";
 import Profile from "./components/Profile";
-// import Story from "./components/Story";
+import AddStory from "./components/AddStory";
+import Story from "./components/Story";
 
 class App extends Component {
   state = {
     user: null,
-    activePage: "home"
+    activePage: "home",
+    activeStroy: null
   };
+
   componentDidMount() {
     // check if we have a token in the local storage
     const user = getUser();
@@ -25,6 +28,11 @@ class App extends Component {
   changeActivePage = activePage => {
     this.setState({ activePage });
   };
+
+  setActiveStroy = activeStroy => {
+    this.setState({ activeStroy });
+  };
+
   onSignin = () => {
     this.setState({ user: getUser() });
     this.changeActivePage("profile");
@@ -37,9 +45,10 @@ class App extends Component {
 
   // AddStory = () => {
   //   this.setState({ user: getUser() });
-  //   this.changeActivePage("story");
+  //   this.changeActivePage("add story");
   //   //   this.setState({ })
   // }
+
   render() {
     const { user, activePage } = this.state;
     return (
@@ -72,8 +81,11 @@ class App extends Component {
               ""
             )}
           {activePage === "profile" ? <Profile /> : ""}
+          {activePage === "add-story" ? <AddStory changeActivePage={this.changeActivePage} setActiveStroy={this.setActiveStroy} /> : ""}
+          {activePage === "story" ? <Story story={this.state.activeStroy} /> : ""}
         </div>
       </div>
+
       //   </div >
 
 

@@ -1,21 +1,25 @@
 import React from "react";
 
-const Home = () => <div>
+class Home extends React.Component {
 
 
-    {/* When added a story it gets inserted here as a card */}
+    render() {
+        //    How Do i loop through my story table and show it down there 
+        return (
 
-    <div class="card" style={{ marginTop: 100, marginLeft: 50 }}>
-        <div class="container" style={{ marginTop: 20 }}>
-            <h4>USERS NAME</h4>
-            <p></p>
+            <div className="card" style={{ marginTop: 100, marginLeft: 50 }}>
+                <div className="container" style={{ marginTop: 20 }}>
+                    <h4> Title lies here </h4>
 
-            <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
 
-        </div>
-        <button type="button" class="btn btn-light" link_to={'/Story'} >  View Story  </button>
-    </div>
+                    <p>  Body lies here </p>
 
-</div>
+                </div>
+                <button type="button" className="btn btn-light" link_to={'/Story'} >  View Story  </button>
+            </div>
 
+
+        )
+    }
+}
 export default Home;

@@ -13,7 +13,7 @@ const authenticatedOptions = (changeActivePage, onSignout, AddStory) => (
       <div className="nav-link">Sign Out</div>
     </li>
     {/* I need to add AddStory function someweher */}
-    <li className="nav-item" onClick={() => AddStory()}>
+    <li className="nav-item" onClick={() => changeActivePage("add-story")}>
       <div className="nav-link">Add new story </div>
     </li>
 
