@@ -46,7 +46,7 @@ class App extends Component {
   // AddStory = () => {
   //   this.setState({ user: getUser() });
   //   this.changeActivePage("add story");
-  //   //   this.setState({ })
+  //    this.setState({ })
   // }
 
   render() {

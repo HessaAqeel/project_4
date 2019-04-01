@@ -2,45 +2,39 @@ import React, { Component } from "react";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 
-class AddStory extends Component {
+class editStory extends Component {
     state = {
         formData: {
-            title: null,
-            author: null,
-            body: null
+            new: null,
+            old: null,
+
         },
         err: null
     };
-    // Add story 
-    handleLoginRequest = story => {
-        let url = `${apiUrl}/story`;
 
-        const user = getUser()
-        story.author = user.id
+    // Edit Story 
 
+    handleLoginRequest = passwords => {
+        // /change-password` --> this is a route 
+        let url = `${apiUrl}/story/:id`;
+        // apiUrl --> apiConfig.js --> two links are tjere for the heroku phase and the localhost
+        // console.log({ email: getUser().email, passwords });
+        // console.log(url);
         fetch(url, {
+            method: "PUT",
             mode: "cors",
             credentials: "include",
-            method: "POST",
             headers: {
-                "Content-type": "application/json"
+                "Content-Type": "application/json"
             },
-            body: JSON.stringify(story)
+            body: JSON.stringify({ email: getUser().email, passwords })
         })
             .then(res => res.json())
             .then(data => {
-                if (data.status > 299)
-                    this.setState({ err: data.message });
-                else {
-
-                    this.props.changeActivePage("story");
-                    this.props.setActiveStroy(data.story)
-
-                }
+                this.props.changeActivePage("home");
             })
             .catch(e => console.log(e));
     };
-
     handleSubmit = e => {
         e.preventDefault();
         this.handleLoginRequest(this.state.formData);
@@ -49,8 +43,6 @@ class AddStory extends Component {
     handleChange = ({ currentTarget }) => {
         const formData = { ...this.state.formData };
         formData[currentTarget.name] = currentTarget.value;
-
-        console.log(currentTarget.name, currentTarget.value)
         this.setState({ formData });
     };
 
@@ -93,10 +85,5 @@ class AddStory extends Component {
     }
 }
 
-export default AddStory;
+export default editStory;
 
-// const AddStory = () => <div>
-//     Author: <input type="text" name="fname" />
-//     Story: <input type="text" name="lname" />
-//     <input type="submit" value="Submit" />
-// </div>
