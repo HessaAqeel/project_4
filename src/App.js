@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Profile from "./components/Profile";
 import AddStory from "./components/AddStory";
 import Story from "./components/Story";
+import Mystories from "./components/Mystories";
 
 class App extends Component {
   state = {
@@ -30,6 +31,15 @@ class App extends Component {
   };
 
   setActiveStroy = activeStroy => {
+    this.setState({ activeStroy });
+  };
+
+  setOneActiveStroy = activeStroy => {
+    this.setState({ activeStroy });
+  };
+
+  // View one resource 
+  setViewActiveStroy = activeStroy => {
     this.setState({ activeStroy });
   };
 
@@ -80,9 +90,13 @@ class App extends Component {
           ) : (
               ""
             )}
+
           {activePage === "profile" ? <Profile /> : ""}
           {activePage === "add-story" ? <AddStory changeActivePage={this.changeActivePage} setActiveStroy={this.setActiveStroy} /> : ""}
-          {activePage === "story" ? <Story story={this.state.activeStroy} /> : ""}
+          {activePage === "story" ? <Story story={this.state.activeStroy} changeActivePage={this.changeActivePage} /> : ""}
+          {activePage === "Mystories" ? <Mystories Mystories={this.state.setOneActiveStroy} /> : ""}
+          {activePage === "story" ? <Story Story1={this.state.setViewActiveStroy} /> : ""}
+
         </div>
       </div>
 

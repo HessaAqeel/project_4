@@ -12,9 +12,12 @@ const authenticatedOptions = (changeActivePage, onSignout, AddStory) => (
     <li className="nav-item" onClick={() => onSignout()}>
       <div className="nav-link">Sign Out</div>
     </li>
-    {/* I need to add AddStory function someweher */}
+
     <li className="nav-item" onClick={() => changeActivePage("add-story")}>
       <div className="nav-link">Add new story </div>
+    </li>
+    <li className="nav-item" onClick={() => changeActivePage("Mystories")}>
+      <div className="nav-link">My Stories </div>
     </li>
 
   </React.Fragment>

@@ -1,17 +1,17 @@
 import React from "react";
-// import Story from "./Story";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 
-class Home extends React.Component {
+class Mystories extends React.Component {
     state = {
         stories: []
     };
 
-    // Get all stories
+    // Get stories that belongs to certain user  
     handleGetRequest() {
         const user = getUser();
-        const url = `${apiUrl}/stories`;
+        const url = `${apiUrl}/user/${user.id}/stories`;
+        console.log(" USER ID =  ", user.id);
 
         fetch(url, {
             method: "GET",
@@ -21,16 +21,10 @@ class Home extends React.Component {
                 "Content-type": "application/json"
             }
         })
-            .then(response => {
-                // console.log(response.body);
-                return response.json()
-            })
-
+            .then(response => response.json())
             .then(data => {
-
                 const stories = [...data.stories]
                 this.setState({ stories })
-
                 console.log(data);
             })
             .catch(e => console.log(e));
@@ -52,7 +46,8 @@ class Home extends React.Component {
                         <h4> title: {stories.title} </h4>
                         <h4>body: {stories.body} </h4>
                     </div>
-                    <button type="button" className="btn btn-light" >  View Story  </button>
+
+                    <button type="button" className="btn btn-light" link_to={'/Story'} >  View Story  </button>
                 </div>
 
             );
@@ -68,4 +63,4 @@ class Home extends React.Component {
         )
     }
 }
-export default Home;
+export default Mystories;
