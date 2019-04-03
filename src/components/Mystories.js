@@ -39,17 +39,17 @@ class Mystories extends React.Component {
         // loop through my story table and show it down there 
         const stories = this.state.stories.map(stories => {
             return (
+                <div className="storyBorder">
+                    <div className="card">
+                        <div className="container" >
 
-                <div className="card">
-                    <div className="container" >
+                            <h4> {stories.title} </h4>
+                            <h4>  {stories.body} </h4>
+                        </div>
 
-                        <h4> Title: {stories.title} </h4>
-                        <h4>  {stories.body} </h4>
+                        <button type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage(stories)}>  View Post  </button>
+                        {/* <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)}> Delete </button> */}
                     </div>
-
-                    <button type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage(stories)}>  View Post  </button>
-                    {/* <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)}> Delete </button> */}
-
                 </div>
 
             );

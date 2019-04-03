@@ -17,7 +17,24 @@ h1{
     color: #000;
 }
 
+h4{
+    font-size: 70px;
+    
+}
 
+h4 , #homeH4{
+    font-size: 19px;
+    
+}
+
+h4 , #homeH4title{
+    font-size: 30px;
+}
+
+button , #viewButtom{
+font-weight: bold;
+
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -38,7 +55,7 @@ label{
   font-family: 'Patua One';
   padding-left: 40px;
   padding-right: 40px;
-  padding-bottom: 300px;
+  padding-bottom: 150px;
   padding-top: 100px;
   margin: 0 auto; 
   float: none; 
@@ -46,9 +63,11 @@ label{
   margin-top:40px; 
 }
 
+
 img{
     width:40px;
 }
+
 .navbar-brand{
     font-weight: bold;
     font-size: 50px;
@@ -97,10 +116,7 @@ img{
 }
 
 /* Stars */
-* {
-    margin: 0;
-    padding: 0;
-}
+
 header {
     background-color:rgba(33, 33, 33, 0.9);
     color:#ffffff;

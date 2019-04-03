@@ -69,7 +69,7 @@ class AddStory extends Component {
                     )}
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label>title </label>
+                        <label>Title </label>
                         <input id="textArea"
                             name="title"
                             className="form-control"
@@ -77,7 +77,7 @@ class AddStory extends Component {
                         />
 
 
-                        <label>body</label>
+                        <label>Body</label>
                         <textarea id="textArea"
                             name="body"
                             className="form-control"

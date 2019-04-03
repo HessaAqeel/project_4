@@ -13,9 +13,9 @@ class EditStory extends Component {
 
     // Edit Story   
     handleEditRequest = (story) => {
-        console.log("\n\n\n\n\n\n\n\n ******** handleSubmit")
+
         const user = getUser();
-        const url = `${apiUrl}/story/${story.id}`;
+        const url = `${apiUrl}/story/${this.props.story.id}`;
         fetch(url, {
             method: "PUT",
             mode: "cors",
@@ -58,7 +58,7 @@ class EditStory extends Component {
                     )}
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
-                        <label>title </label>
+                        <label>Title </label>
                         <input
                             name="title"
                             className="form-control"
@@ -67,7 +67,7 @@ class EditStory extends Component {
 
                         />
 
-                        <label>body</label>
+                        <label>Body</label>
                         <textarea
                             name="body"
                             className="form-control"

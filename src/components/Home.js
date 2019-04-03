@@ -51,11 +51,11 @@ class Home extends React.Component {
                 <div className="card" >
                     <div className="container" style={{ marginTop: 20 }}>
 
-                        <h4> Title: {stories.title} </h4>
-                        <h4>  {stories.body} </h4>
+                        <h4 id="homeH4title"> {stories.title} </h4>
+                        <h4 id="homeH4">  {stories.body} </h4>
                     </div>
 
-                    <button type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage("story")}>View Post</button>
+                    <button id="viewButtom" type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage(stories)}>View Post</button>
 
                 </div>
 
