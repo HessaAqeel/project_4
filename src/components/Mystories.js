@@ -43,11 +43,11 @@ class Mystories extends React.Component {
                 <div className="card">
                     <div className="container" >
 
-                        <h4> title: {stories.title} </h4>
+                        <h4> Title: {stories.title} </h4>
                         <h4>  {stories.body} </h4>
                     </div>
 
-                    <button type="button" className="btn btn-light" >  View Post  </button>
+                    <button type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage(stories)}>  View Post  </button>
                     {/* <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)}> Delete </button> */}
 
                 </div>

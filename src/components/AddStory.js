@@ -11,6 +11,7 @@ class AddStory extends Component {
         },
         err: null
     };
+
     // Add story 
     handleLoginRequest = story => {
         let url = `${apiUrl}/story`;
@@ -55,9 +56,6 @@ class AddStory extends Component {
     };
 
 
-    // Delete a story: 
-
-    // Edit a story:
 
     render() {
         return (
@@ -72,19 +70,21 @@ class AddStory extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <div className="form-group">
                         <label>title </label>
-                        <input
+                        <input id="textArea"
                             name="title"
                             className="form-control"
                             onChange={this.handleChange}
                         />
 
+
                         <label>body</label>
-                        <textarea
+                        <textarea id="textArea"
                             name="body"
                             className="form-control"
                             onChange={this.handleChange}
                         />
                     </div>
+
 
 
                     <button type="submit" className="btn btn-primary"> Add </button>

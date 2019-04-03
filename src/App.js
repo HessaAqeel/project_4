@@ -31,6 +31,11 @@ class App extends Component {
     this.setState({ activePage });
   };
 
+  changeToStoryPage = (story) => {
+    this.setState({ activeStroy: story })
+    this.changeActivePage("story");
+  }
+
   setActiveStroy = activeStroy => {
     this.setState({ activeStroy });
   };
@@ -39,7 +44,8 @@ class App extends Component {
     this.setState({ activeStroy });
   };
 
-  // View one resource 
+
+  // View one resource
   setViewActiveStroy = activeStroy => {
     this.setState({ activeStroy });
   };
@@ -48,13 +54,15 @@ class App extends Component {
 
   onSignin = () => {
     this.setState({ user: getUser() });
-    this.changeActivePage("profile");
+    this.changeActivePage("home");
   };
+
   onSignout = () => {
     console.log("sigin out");
     this.setState({ user: null });
     Signout();
   };
+
 
   // AddStory = () => {
   //   this.setState({ user: getUser() });
@@ -77,14 +85,14 @@ class App extends Component {
         />
 
         <div className="container">
-          {activePage === "home" ? <Home /> : ""}
+          {activePage === "home" ? <Home changeToStoryPage={this.changeToStoryPage} /> : ""}
           {activePage === "sign-in" ? (
             <SigninForm onSignin={this.onSignin} />
           ) : (
               ""
             )}
           {activePage === "sign-up" ? (
-            <SignupForm onSignin={this.onSignin} />
+            <SignupForm onSignin={this.onSignin} changeActivePage={this.changeActivePage} />
           ) : (
               ""
             )}
@@ -93,6 +101,7 @@ class App extends Component {
           ) : (
               ""
             )}
+
           {/* {activePage === "story" ? (
             <Story Story1={this.setViewActiveStroy} />
           ) : (

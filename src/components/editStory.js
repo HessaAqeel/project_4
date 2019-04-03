@@ -13,6 +13,7 @@ class EditStory extends Component {
 
     // Edit Story   
     handleEditRequest = (story) => {
+        console.log("\n\n\n\n\n\n\n\n ******** handleSubmit")
         const user = getUser();
         const url = `${apiUrl}/story/${story.id}`;
         fetch(url, {
@@ -46,7 +47,7 @@ class EditStory extends Component {
 
     render() {
 
-        // console.log("\n\\nn\n\n\n\n ********", this.props.story)
+
         return (
             <div className="pt-5 mt-5">
                 <h1>EDIT Story</h1>

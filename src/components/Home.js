@@ -9,14 +9,6 @@ class Home extends React.Component {
         activePage: "home"
     };
 
-
-    changeActivePage = activePage => {
-        this.setState({ activePage });
-    };
-
-    setViewActiveStroy = activeStroy => {
-        this.setState({ activeStroy });
-    };
     // Get all stories
     handleGetRequest() {
         const user = getUser();
@@ -41,7 +33,7 @@ class Home extends React.Component {
                 this.setState({ stories })
 
                 console.log(data);
-                this.props.changeActivePage("story")
+                //this.props.changeActivePage("story")
             })
             .catch(e => console.log(e));
     }
@@ -63,7 +55,7 @@ class Home extends React.Component {
                         <h4>  {stories.body} </h4>
                     </div>
 
-                    <button type="button" class="btn btn-light" onClick={() => this.props.changeActivePage("story")} >View Post</button>
+                    <button type="button" className="btn btn-light" onClick={() => this.props.changeToStoryPage("story")}>View Post</button>
 
                 </div>
 

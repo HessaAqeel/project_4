@@ -24,9 +24,6 @@ const authenticatedOptions = (changeActivePage, onSignout) => (
       <div className="nav-link">Sign Out</div>
     </li>
 
-
-    <button type="button" className="btn btn-light" onClick={() => changeActivePage("story")} > View Story  </button>
-
   </React.Fragment>
 );
 
@@ -54,7 +51,7 @@ const alwaysOptions = changeActivePage => (
 
 const Nav = ({ user, changeActivePage, onSignout }) => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light" >
-    <div className="navbar-brand"> A writer's dream</div>
+    <div className="navbar-brand"> Writer's dream</div>
     <img src="https://www.shareicon.net/data/2016/11/15/853684_pen_512x512.png" alt="" />
 
     <button

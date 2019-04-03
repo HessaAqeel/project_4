@@ -1,12 +1,12 @@
 import React from "react";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
+import swal from 'sweetalert';
 
 
 class Story extends React.Component {
 
-    // Delete: 
-
+    // Delete a post: 
     handleDeleteRequest = (story) => {
         // api req deleted by id
         const user = getUser();
@@ -24,9 +24,11 @@ class Story extends React.Component {
                 return response.json()
             })
 
+        swal("Story has been deleted")
             .then(data => {
                 console.log(data);
                 this.props.changeActivePage("home")
+
             })
             .catch(e => console.log(e));
     }
@@ -37,13 +39,15 @@ class Story extends React.Component {
             <div className="storyBorder">
                 <div class="card">
                     <div class="container">
+
                         <h4>Title: {this.props.story ? this.props.story.title : ""}</h4>
                         <p> Story: {this.props.story ? this.props.story.body : ""} </p>
 
 
                         <button type="button" className="btn btn-light" onClick={() => this.props.changeActivePage("home")}> Back </button>
+                        {/* <button type="button" className="btn btn-light" onClick={() => this.props.changeActivePage("edit-story")}> Edit </button> */}
                         <button type="button" className="btn btn-light" onClick={() => this.props.changeActivePage("edit-story")}> Edit </button>
-                        <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)}> Delete </button>
+                        <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)} > Delete </button>
                     </div>
                 </div>
 
