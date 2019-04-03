@@ -1,7 +1,18 @@
 import React from "react";
 
-const authenticatedOptions = (changeActivePage, onSignout, AddStory) => (
+const authenticatedOptions = (changeActivePage, onSignout) => (
+
   <React.Fragment>
+
+    <li className="nav-item" onClick={() => changeActivePage("add-story")}>
+      <div className="nav-link">Add new story </div>
+    </li>
+
+
+    <li className="nav-item" onClick={() => changeActivePage("Mystories")}>
+      <div className="nav-link">My Stories </div>
+    </li>
+
     <li
       className="nav-item"
       onClick={() => changeActivePage("change-password")}
@@ -13,17 +24,11 @@ const authenticatedOptions = (changeActivePage, onSignout, AddStory) => (
       <div className="nav-link">Sign Out</div>
     </li>
 
-    <li className="nav-item" onClick={() => changeActivePage("add-story")}>
-      <div className="nav-link">Add new story </div>
-    </li>
-    <li className="nav-item" onClick={() => changeActivePage("Mystories")}>
-      <div className="nav-link">My Stories </div>
-    </li>
+
+    <button type="button" className="btn btn-light" onClick={() => changeActivePage("story")} > View Story  </button>
 
   </React.Fragment>
 );
-
-
 
 
 
@@ -48,8 +53,10 @@ const alwaysOptions = changeActivePage => (
 );
 
 const Nav = ({ user, changeActivePage, onSignout }) => (
-  <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  <nav className="navbar navbar-expand-lg navbar-light bg-light" >
     <div className="navbar-brand"> A writer's dream</div>
+    <img src="https://www.shareicon.net/data/2016/11/15/853684_pen_512x512.png" alt="" />
+
     <button
       className="navbar-toggler"
       type="button"

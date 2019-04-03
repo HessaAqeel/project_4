@@ -10,12 +10,13 @@ import Profile from "./components/Profile";
 import AddStory from "./components/AddStory";
 import Story from "./components/Story";
 import Mystories from "./components/Mystories";
+import EditStory from "./components/EditStory";
 
 class App extends Component {
   state = {
     user: null,
     activePage: "home",
-    activeStroy: null
+    activeStroy: null,
   };
 
   componentDidMount() {
@@ -42,6 +43,8 @@ class App extends Component {
   setViewActiveStroy = activeStroy => {
     this.setState({ activeStroy });
   };
+
+
 
   onSignin = () => {
     this.setState({ user: getUser() });
@@ -90,12 +93,19 @@ class App extends Component {
           ) : (
               ""
             )}
+          {/* {activePage === "story" ? (
+            <Story Story1={this.setViewActiveStroy} />
+          ) : (
+              ""
+            )} */}
 
           {activePage === "profile" ? <Profile /> : ""}
           {activePage === "add-story" ? <AddStory changeActivePage={this.changeActivePage} setActiveStroy={this.setActiveStroy} /> : ""}
+          {activePage === "edit-story" ? <EditStory changeActivePage={this.changeActivePage} story={this.state.activeStroy} /> : ""}
+
           {activePage === "story" ? <Story story={this.state.activeStroy} changeActivePage={this.changeActivePage} /> : ""}
           {activePage === "Mystories" ? <Mystories Mystories={this.state.setOneActiveStroy} /> : ""}
-          {activePage === "story" ? <Story Story1={this.state.setViewActiveStroy} /> : ""}
+
 
         </div>
       </div>

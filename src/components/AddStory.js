@@ -61,6 +61,7 @@ class AddStory extends Component {
 
     render() {
         return (
+
             <div className="pt-5 mt-5">
                 <h1>Add Story</h1>
                 {this.state.err ? (
@@ -78,12 +79,13 @@ class AddStory extends Component {
                         />
 
                         <label>body</label>
-                        <input
+                        <textarea
                             name="body"
                             className="form-control"
                             onChange={this.handleChange}
                         />
                     </div>
+
 
                     <button type="submit" className="btn btn-primary"> Add </button>
 

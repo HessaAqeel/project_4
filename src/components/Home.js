@@ -5,9 +5,18 @@ import { getUser } from "../services/AuthService";
 
 class Home extends React.Component {
     state = {
-        stories: []
+        stories: [],
+        activePage: "home"
     };
 
+
+    changeActivePage = activePage => {
+        this.setState({ activePage });
+    };
+
+    setViewActiveStroy = activeStroy => {
+        this.setState({ activeStroy });
+    };
     // Get all stories
     handleGetRequest() {
         const user = getUser();
@@ -32,6 +41,7 @@ class Home extends React.Component {
                 this.setState({ stories })
 
                 console.log(data);
+                this.props.changeActivePage("story")
             })
             .catch(e => console.log(e));
     }
@@ -43,25 +53,26 @@ class Home extends React.Component {
     render() {
 
         // loop through my story table and show it down there 
+
         const stories = this.state.stories.map(stories => {
             return (
-
-                <div className="card" style={{ marginTop: 100, marginLeft: 50 }}>
+                <div className="card" >
                     <div className="container" style={{ marginTop: 20 }}>
 
-                        <h4> title: {stories.title} </h4>
-                        <h4>body: {stories.body} </h4>
+                        <h4> Title: {stories.title} </h4>
+                        <h4>  {stories.body} </h4>
                     </div>
-                    <button type="button" className="btn btn-light" >  View Story  </button>
+
+                    <button type="button" class="btn btn-light" onClick={() => this.props.changeActivePage("story")} >View Post</button>
+
                 </div>
 
             );
         });
 
-
         return (
 
-            <div>
+            <div >
                 {stories}
             </div>
 

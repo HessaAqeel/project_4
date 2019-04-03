@@ -40,14 +40,16 @@ class Mystories extends React.Component {
         const stories = this.state.stories.map(stories => {
             return (
 
-                <div className="card" style={{ marginTop: 100, marginLeft: 50 }}>
-                    <div className="container" style={{ marginTop: 20 }}>
+                <div className="card">
+                    <div className="container" >
 
                         <h4> title: {stories.title} </h4>
-                        <h4>body: {stories.body} </h4>
+                        <h4>  {stories.body} </h4>
                     </div>
 
-                    <button type="button" className="btn btn-light" link_to={'/Story'} >  View Story  </button>
+                    <button type="button" className="btn btn-light" >  View Post  </button>
+                    {/* <button type="button" className="btn btn-light" onClick={() => this.handleDeleteRequest(this.props.story)}> Delete </button> */}
+
                 </div>
 
             );

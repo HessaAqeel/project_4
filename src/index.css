@@ -4,9 +4,12 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+      background: url(https://steamuserimages-a.akamaihd.net/ugc/933802598689448503/9178C72797F7DED243DBEF67A90DEE68204890FF/);
+
 }
+
+
+
 
 /* Card CSS starts here  */
 code {
@@ -14,22 +17,70 @@ code {
     monospace;
     
 }
-
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  transition: 0.3s;
-  width: 40%;
-  opacity: 0.7;
-  font-family: 'Patua One';
+label{
+    width: 200px;
 }
 
+
+
+.card {
+
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  display: flex;
+  width: 50%;
+  opacity: 0.8;
+  font-family: 'Patua One';
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 170px;
+  padding-top: 100px;
+  margin: 0 auto; 
+  float: none; 
+  margin-bottom: 40px; 
+  margin-top:40px; 
+}
+
+img{
+    width:40px;
+}
+.navbar-brand{
+    font-weight: bold;
+    font-size: 50px;
+}
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+/* .felx-container{
+    display: flex;
+} */
+
 .container {
   padding: 2px 16px;
 }
+
+.form-control{
+     width: 200px;
+}
+.button{
+  background-color: white;
+  color: black;
+  border: 2px solid #e7e7e7;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+
 
 
 /* Stars */
@@ -123,3 +174,4 @@ header a, a:visited {
   -webkit-animation:move-twink-back 200s linear infinite;
   animation:move-twink-back 200s linear infinite;
 }
+

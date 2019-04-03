@@ -2,24 +2,19 @@ import React, { Component } from "react";
 import apiUrl from "../apiConfig";
 import { getUser } from "../services/AuthService";
 
-class editStory extends Component {
+class EditStory extends Component {
     state = {
         formData: {
-            new: null,
-            old: null,
-
+            title: this.props.story.title,
+            body: this.props.story.body
         },
         err: null
     };
 
-    // Edit Story 
-
-    handleLoginRequest = passwords => {
-        // /change-password` --> this is a route 
-        let url = `${apiUrl}/story/:id`;
-        // apiUrl --> apiConfig.js --> two links are tjere for the heroku phase and the localhost
-        // console.log({ email: getUser().email, passwords });
-        // console.log(url);
+    // Edit Story   
+    handleEditRequest = (story) => {
+        const user = getUser();
+        const url = `${apiUrl}/story/${story.id}`;
         fetch(url, {
             method: "PUT",
             mode: "cors",
@@ -27,7 +22,7 @@ class editStory extends Component {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ email: getUser().email, passwords })
+            body: JSON.stringify({ story: story })
         })
             .then(res => res.json())
             .then(data => {
@@ -35,9 +30,10 @@ class editStory extends Component {
             })
             .catch(e => console.log(e));
     };
+
     handleSubmit = e => {
         e.preventDefault();
-        this.handleLoginRequest(this.state.formData);
+        this.handleEditRequest(this.state.formData);
     };
 
     handleChange = ({ currentTarget }) => {
@@ -47,14 +43,13 @@ class editStory extends Component {
     };
 
 
-    // Delete a story: 
-
-    // Edit a story:
 
     render() {
+
+        // console.log("\n\\nn\n\n\n\n ********", this.props.story)
         return (
             <div className="pt-5 mt-5">
-                <h1>Add Story</h1>
+                <h1>EDIT Story</h1>
                 {this.state.err ? (
                     <div className="alert alert-warning"> {this.state.err} </div>
                 ) : (
@@ -67,17 +62,22 @@ class editStory extends Component {
                             name="title"
                             className="form-control"
                             onChange={this.handleChange}
+                            value={this.state.formData.title}
+
                         />
 
                         <label>body</label>
-                        <input
+                        <textarea
                             name="body"
                             className="form-control"
                             onChange={this.handleChange}
+                            value={this.state.formData.body}
+
+
                         />
                     </div>
 
-                    <button type="submit" className="btn btn-primary"> Add </button>
+                    <button type="submit" className="btn btn-primary"> submit </button>
 
                 </form>
             </div>
@@ -85,5 +85,5 @@ class editStory extends Component {
     }
 }
 
-export default editStory;
+export default EditStory;
 
