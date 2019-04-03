@@ -113,7 +113,7 @@ class App extends Component {
           {activePage === "edit-story" ? <EditStory changeActivePage={this.changeActivePage} story={this.state.activeStroy} /> : ""}
 
           {activePage === "story" ? <Story story={this.state.activeStroy} changeActivePage={this.changeActivePage} /> : ""}
-          {activePage === "Mystories" ? <Mystories Mystories={this.state.setOneActiveStroy} /> : ""}
+          {activePage === "Mystories" ? <Mystories Mystories={this.state.setOneActiveStroy} changeToStoryPage={this.changeToStoryPage} /> : ""}
 
 
         </div>
